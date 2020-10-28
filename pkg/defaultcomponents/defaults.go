@@ -18,7 +18,12 @@ package defaultcomponents // import "aws-observability.io/collector/defaultcompo
 import (
 	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awsemfexporter"
 	"github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awsxrayexporter"
+<<<<<<< HEAD
 	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsxrayreceiver"
+=======
+	"github.com/open-telemetry/opentelemetry-collector-contrib/processor/metricstransformprocessor"
+	"github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsecscontainermetricsreceiver"
+>>>>>>> 4988c64d7b0ec9982576c475bcc989fedc3f83c4
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/component/componenterror"
 	"go.opentelemetry.io/collector/exporter/fileexporter"
@@ -42,8 +47,24 @@ func Components() (component.Factories, error) {
 	factories.Receivers, err = component.MakeReceiverFactoryMap(
 		prometheusreceiver.NewFactory(),
 		otlpreceiver.NewFactory(),
+<<<<<<< HEAD
 		awsxrayreceiver.NewFactory(),
+=======
+		awsecscontainermetricsreceiver.NewFactory(),
+>>>>>>> 4988c64d7b0ec9982576c475bcc989fedc3f83c4
 	)
+	if err != nil {
+		errs = append(errs, err)
+	}
+
+	// enable the selected processors
+	processors := []component.ProcessorFactory{
+		metricstransformprocessor.NewFactory(),
+	}
+	for _, pr := range factories.Processors {
+		processors = append(processors, pr)
+	}
+	factories.Processors, err = component.MakeProcessorFactoryMap(processors...)
 	if err != nil {
 		errs = append(errs, err)
 	}

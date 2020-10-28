@@ -6,6 +6,8 @@ require (
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awsemfexporter v0.12.1-0.20201019152450-d4fe7c3eec1e
 	github.com/open-telemetry/opentelemetry-collector-contrib/exporter/awsxrayexporter v0.12.0
 	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsxrayreceiver v0.13.1-0.20201022225542-7c196e77a175
+	github.com/open-telemetry/opentelemetry-collector-contrib/processor/metricstransformprocessor v0.12.0
+	github.com/open-telemetry/opentelemetry-collector-contrib/receiver/awsecscontainermetricsreceiver v0.13.1-0.20201022225622-7a23d7606a89
 	github.com/pkg/errors v0.9.1
 	github.com/spf13/viper v1.7.1
 	github.com/stretchr/testify v1.6.1
